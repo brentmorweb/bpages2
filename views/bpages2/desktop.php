@@ -6773,22 +6773,107 @@
         
           <h3 class="drawer-section-title">Author</h3>
           <div class="section-content" id="authorFilterSection">
-            <div class="author-filter-grid" id="authorFilterList" role="group" aria-label="Filter by author"></div>
+            <div class="author-filter-grid" id="authorFilterList" role="group" aria-label="Filter by author">
+              <button type="button" class="author-filter-chip" data-author-value="John Lee">
+                <span class="author-avatar" data-color="blue">JL</span>
+                John Lee
+              </button>
+              <button type="button" class="author-filter-chip" data-author-value="Alice Moore">
+                <span class="author-avatar" data-color="purple">AM</span>
+                Alice Moore
+              </button>
+              <button type="button" class="author-filter-chip" data-author-value="Ryan Chen">
+                <span class="author-avatar" data-color="teal">RC</span>
+                Ryan Chen
+              </button>
+            </div>
           </div>
-        
+
           <h3 class="drawer-section-title">Status</h3>
           <div class="section-content" id="statusFilterSection">
-            <div class="filter-pill-group" id="statusFilterPills" role="group" aria-label="Filter by status"></div>
+            <div class="filter-pill-group" id="statusFilterPills" role="group" aria-label="Filter by status">
+              <button type="button" class="filter-pill" data-status-value="published">Published</button>
+              <button type="button" class="filter-pill" data-status-value="unpublished">Unpublished</button>
+              <button type="button" class="filter-pill" data-status-value="draft">Draft</button>
+              <button type="button" class="filter-pill" data-status-value="scheduled">Scheduled</button>
+              <button type="button" class="filter-pill" data-status-value="trash">Trash</button>
+            </div>
           </div>
-        
+
           <h3 class="drawer-section-title">Type</h3>
           <div class="section-content" id="typeFilterSection">
-            <div class="type-chip-group" id="typeFilterList" role="group" aria-label="Filter by type"></div>
+            <div class="type-chip-group" id="typeFilterList" role="group" aria-label="Filter by type">
+              <button type="button" class="type-chip" data-type-value="Landing" data-color="blue">
+                <span class="type-dot" aria-hidden="true"></span>
+                Landing
+              </button>
+              <button type="button" class="type-chip" data-type-value="Blog" data-color="violet">
+                <span class="type-dot" aria-hidden="true"></span>
+                Blog
+              </button>
+              <button type="button" class="type-chip" data-type-value="Event" data-color="amber">
+                <span class="type-dot" aria-hidden="true"></span>
+                Event
+              </button>
+              <button type="button" class="type-chip" data-type-value="Portfolio" data-color="pink">
+                <span class="type-dot" aria-hidden="true"></span>
+                Portfolio
+              </button>
+              <button type="button" class="type-chip" data-type-value="Contact" data-color="emerald">
+                <span class="type-dot" aria-hidden="true"></span>
+                Contact
+              </button>
+              <button type="button" class="type-chip" data-type-value="Home" data-color="blue">
+                <span class="type-dot" aria-hidden="true"></span>
+                Home
+              </button>
+              <button type="button" class="type-chip" data-type-value="Content" data-color="slate">
+                <span class="type-dot" aria-hidden="true"></span>
+                Content
+              </button>
+            </div>
           </div>
-        
+
           <h3 class="drawer-section-title">Report Card</h3>
           <div class="section-content" id="reportFilterSection">
-            <div class="report-checkboxes" id="reportFilterList"></div>
+            <div class="report-checkboxes" id="reportFilterList">
+              <label class="report-checkbox">
+                <input type="checkbox" value="seo-low">
+                <span>SEO score less than 50%</span>
+              </label>
+              <label class="report-checkbox">
+                <input type="checkbox" value="slow-speed">
+                <span>Slow page speed</span>
+              </label>
+              <label class="report-checkbox">
+                <input type="checkbox" value="meta-title">
+                <span>Meta title issues</span>
+              </label>
+              <label class="report-checkbox">
+                <input type="checkbox" value="meta-description">
+                <span>Meta description issues</span>
+              </label>
+              <label class="report-checkbox">
+                <input type="checkbox" value="og-issues">
+                <span>OG (Open Graph) issues</span>
+              </label>
+              <label class="report-checkbox">
+                <input type="checkbox" value="broken-links">
+                <span>Broken links</span>
+              </label>
+              <label class="report-checkbox">
+                <input type="checkbox" value="heading-hierarchy">
+                <span>Improper heading hierarchy</span>
+              </label>
+              <label class="report-checkbox">
+                <input type="checkbox" value="stale-edit">
+                <span>Edited more than 90 days ago</span>
+              </label>
+              <label class="report-checkbox">
+                <input type="checkbox" value="low-engagement">
+                <span>Low engagement rate</span>
+              </label>
+            </div>
           </div>
         </div>
       </div>
@@ -6808,6 +6893,197 @@
 
 </div>
 
+  <template id="analyticsDrawerTemplate">
+    <div class="page-analytics-drawer" data-analytics-drawer>
+      <button type="button" class="analytics-close" data-analytics-close aria-label="Close analytics panel">
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </button>
+      <div class="analytics-grid">
+        <div class="analytics-card analytics-card--info">
+          <div class="analytics-card-header">
+            <div>
+              <span class="analytics-card-title">Highlights</span>
+              <span class="analytics-card-subtitle">Owned by Jordan Blake</span>
+            </div>
+            <button type="button" class="analytics-card-action" data-analytics-action="info">Audit</button>
+          </div>
+          <div class="analytics-card-body">
+            <ul class="analytics-metric-list">
+              <li class="analytics-metric">
+                <div class="analytics-metric-main">
+                  <span class="analytics-metric-label">Page Rank</span>
+                  <span class="analytics-metric-value">#1</span>
+                </div>
+                <span class="analytics-chip is-good">Leading</span>
+              </li>
+              <li class="analytics-metric">
+                <div class="analytics-metric-main">
+                  <span class="analytics-metric-label">Word Count</span>
+                  <span class="analytics-metric-value">847 words</span>
+                </div>
+                <span class="analytics-chip is-good">Balanced</span>
+              </li>
+              <li class="analytics-metric">
+                <div class="analytics-metric-main">
+                  <span class="analytics-metric-label">Images</span>
+                  <span class="analytics-metric-value">12 assets</span>
+                </div>
+                <span class="analytics-chip is-caution">Alt text audit</span>
+              </li>
+              <li class="analytics-metric">
+                <div class="analytics-metric-main">
+                  <span class="analytics-metric-label">Links</span>
+                  <span class="analytics-metric-value">18 total</span>
+                </div>
+                <span class="analytics-chip is-issue">2 broken</span>
+              </li>
+              <li class="analytics-metric">
+                <div class="analytics-metric-main">
+                  <span class="analytics-metric-label">Last Edited</span>
+                  <span class="analytics-metric-value">Jul 22, 2025</span>
+                </div>
+                <span class="analytics-chip is-caution">30 days ago</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="analytics-card analytics-card--seo">
+          <div class="analytics-card-header">
+            <div>
+              <span class="analytics-card-title">SEO health</span>
+              <span class="analytics-card-subtitle">Score 92 / 100</span>
+            </div>
+            <button type="button" class="analytics-card-action" data-analytics-action="seo">View SEO audit</button>
+          </div>
+          <div class="analytics-card-body">
+            <ul class="analytics-metric-list">
+              <li class="analytics-metric">
+                <div class="analytics-metric-main">
+                  <span class="analytics-metric-label">Meta Title</span>
+                  <span class="analytics-metric-value">Optimized</span>
+                </div>
+                <span class="analytics-chip is-good">Green</span>
+              </li>
+              <li class="analytics-metric">
+                <div class="analytics-metric-main">
+                  <span class="analytics-metric-label">Meta Description</span>
+                  <span class="analytics-metric-value">Too long</span>
+                </div>
+                <span class="analytics-chip is-caution">-12 chars</span>
+              </li>
+              <li class="analytics-metric">
+                <div class="analytics-metric-main">
+                  <span class="analytics-metric-label">Open Graph</span>
+                  <span class="analytics-metric-value">Complete</span>
+                </div>
+                <span class="analytics-chip is-good">Share ready</span>
+              </li>
+              <li class="analytics-metric">
+                <div class="analytics-metric-main">
+                  <span class="analytics-metric-label">Schema</span>
+                  <span class="analytics-metric-value">Article & Breadcrumb</span>
+                </div>
+                <span class="analytics-chip is-good">Valid</span>
+              </li>
+              <li class="analytics-metric">
+                <div class="analytics-metric-main">
+                  <span class="analytics-metric-label">Page Speed</span>
+                  <span class="analytics-metric-value">91 (mobile)</span>
+                </div>
+                <span class="analytics-chip is-good">+4 vs last week</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="analytics-card analytics-card--accessibility">
+          <div class="analytics-card-header">
+            <div>
+              <span class="analytics-card-title">Accessibility</span>
+              <span class="analytics-card-subtitle">WCAG score 98 / 100</span>
+            </div>
+          </div>
+          <div class="analytics-card-body">
+            <ul class="analytics-metric-list">
+              <li class="analytics-metric">
+                <div class="analytics-metric-main">
+                  <span class="analytics-metric-label">Heading Hierarchy</span>
+                  <span class="analytics-metric-value">1 issue</span>
+                </div>
+                <span class="analytics-chip is-issue">Missing H2</span>
+              </li>
+              <li class="analytics-metric">
+                <div class="analytics-metric-main">
+                  <span class="analytics-metric-label">Image Alt Text</span>
+                  <span class="analytics-metric-value">2 warnings</span>
+                </div>
+                <span class="analytics-chip is-caution">Decorative?</span>
+              </li>
+              <li class="analytics-metric">
+                <div class="analytics-metric-main">
+                  <span class="analytics-metric-label">Keyboard Navigation</span>
+                  <span class="analytics-metric-value">Pass</span>
+                </div>
+                <span class="analytics-chip is-good">Focusable</span>
+              </li>
+              <li class="analytics-metric">
+                <div class="analytics-metric-main">
+                  <span class="analytics-metric-label">Color Contrast</span>
+                  <span class="analytics-metric-value">AA compliant</span>
+                </div>
+                <span class="analytics-chip is-good">Pass</span>
+              </li>
+              <li class="analytics-metric">
+                <div class="analytics-metric-main">
+                  <span class="analytics-metric-label">ARIA Labels</span>
+                  <span class="analytics-metric-value">Optimized</span>
+                </div>
+                <span class="analytics-chip is-good">Complete</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="analytics-card analytics-card--traffic">
+          <div class="analytics-card-header">
+            <div>
+              <span class="analytics-card-title">Traffic</span>
+              <span class="analytics-card-subtitle">Total views (rolling 12 months)</span>
+            </div>
+            <button type="button" class="analytics-card-action" data-analytics-action="traffic">Open traffic report</button>
+          </div>
+          <div class="analytics-card-body">
+            <div class="analytics-traffic-primary">
+              <span class="analytics-traffic-value">12.8k</span>
+              <span class="analytics-traffic-label">Views YTD</span>
+              <span class="analytics-traffic-trend is-up">+12.4% vs last month</span>
+              <span class="analytics-traffic-context">Avg. session duration 3m 24s</span>
+            </div>
+            <div class="analytics-traffic-details">
+              <div class="analytics-detail">
+                <span class="analytics-detail-label">Unique visitors</span>
+                <span class="analytics-detail-value">8.7k</span>
+                <span class="analytics-chip analytics-detail-chip is-good">Growing</span>
+              </div>
+              <div class="analytics-detail">
+                <span class="analytics-detail-label">Bounce rate</span>
+                <span class="analytics-detail-value">38%</span>
+                <span class="analytics-chip analytics-detail-chip is-caution">Watch</span>
+              </div>
+              <div class="analytics-detail">
+                <span class="analytics-detail-label">Top channel</span>
+                <span class="analytics-detail-value">Organic (54%)</span>
+                <span class="analytics-chip analytics-detail-chip is-good">Trending</span>
+              </div>
+              <div class="analytics-detail">
+                <span class="analytics-detail-label">Top device</span>
+                <span class="analytics-detail-value">Mobile (62%)</span>
+                <span class="analytics-chip analytics-detail-chip is-good">Stable</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
 
 
   <script>
@@ -6936,310 +7212,15 @@
         Content: 'Editorial longform',
       };
 
-      // Filter options displayed in the report card checklist UI.
-      const REPORT_CARD_OPTIONS = [
-        { value: 'seo-low', label: 'SEO score less than 50%' },
-        { value: 'slow-speed', label: 'Slow page speed' },
-        { value: 'meta-title', label: 'Meta title issues' },
-        { value: 'meta-description', label: 'Meta description issues' },
-        { value: 'og-issues', label: 'OG (Open Graph) issues' },
-        { value: 'broken-links', label: 'Broken links' },
-        { value: 'heading-hierarchy', label: 'Improper heading hierarchy' },
-        { value: 'stale-edit', label: 'Edited more than 90 days ago' },
-        { value: 'low-engagement', label: 'Low engagement rate' },
-      ];
-
-      // Demo analytics content used to populate the right-side insight drawer when selecting a page.
-      const PAGE_ANALYTICS_DATA = {
-        home: {
-          headline: 'Homepage 2025',
-          summary: 'Performance snapshot for your primary landing experience.',
-          info: {
-            subtitle: 'Owned by Jordan Blake',
-            metrics: [
-              { label: 'Page Rank', value: '#1', status: 'good', statusLabel: 'Leading' },
-              { label: 'Word Count', value: '847 words', status: 'good', statusLabel: 'Balanced' },
-              { label: 'Images', value: '12 assets', status: 'caution', statusLabel: 'Alt text audit' },
-              { label: 'Links', value: '18 total', status: 'issue', statusLabel: '2 broken' },
-              { label: 'Last Edited', value: 'Jul 22, 2025', status: 'caution', statusLabel: '30 days ago' },
-            ],
-          },
-          seo: {
-            subtitle: 'Score 92 / 100',
-            actionLabel: 'View SEO audit',
-            metrics: [
-              { label: 'Meta Title', value: 'Optimized', status: 'good', statusLabel: 'Green' },
-              { label: 'Meta Description', value: 'Too long', status: 'caution', statusLabel: '-12 chars' },
-              { label: 'Open Graph', value: 'Complete', status: 'good', statusLabel: 'Share ready' },
-              { label: 'Schema', value: 'Article & Breadcrumb', status: 'good', statusLabel: 'Valid' },
-              { label: 'Page Speed', value: '91 (mobile)', status: 'good', statusLabel: '+4 vs last week' },
-            ],
-          },
-          accessibility: {
-            subtitle: 'WCAG score 98 / 100',
-            metrics: [
-              { label: 'Heading Hierarchy', value: '1 issue', status: 'issue', statusLabel: 'Missing H2' },
-              { label: 'Image Alt Text', value: '2 warnings', status: 'caution', statusLabel: 'Decorative?' },
-              { label: 'Keyboard Navigation', value: 'Pass', status: 'good', statusLabel: 'Focusable' },
-              { label: 'Color Contrast', value: 'AA compliant', status: 'good', statusLabel: 'Pass' },
-              { label: 'ARIA Labels', value: 'Optimized', status: 'good', statusLabel: 'Complete' },
-            ],
-          },
-          traffic: {
-            subtitle: 'Total views (rolling 12 months)',
-            actionLabel: 'Open traffic report',
-            primary: {
-              value: '12.8k',
-              label: 'Views YTD',
-              delta: '+12.4% vs last month',
-              direction: 'up',
-              context: 'Avg. session duration 3m 24s',
-            },
-            metrics: [
-              { label: 'Unique visitors', value: '8.7k', status: 'good', statusLabel: 'Growing' },
-              { label: 'Bounce rate', value: '38%', status: 'caution', statusLabel: 'Watch' },
-              { label: 'Top channel', value: 'Organic (54%)', status: 'good', statusLabel: 'Trending' },
-              { label: 'Top device', value: 'Mobile (62%)', status: 'good', statusLabel: 'Stable' },
-            ],
-          },
-        },
-        'our-team': {
-          headline: 'Our Team overview',
-          summary: 'Spotlight on staff bios and leadership content.',
-          info: {
-            subtitle: 'Owned by Amelia Reed',
-            metrics: [
-              { label: 'Team Bios', value: '14 published', status: 'good', statusLabel: 'Complete' },
-              { label: 'Word Count', value: '2,450 words', status: 'caution', statusLabel: 'Long read' },
-              { label: 'Profile Photos', value: '12 / 14', status: 'caution', statusLabel: '2 missing' },
-              { label: 'Internal Links', value: '9', status: 'good', statusLabel: 'Healthy' },
-              { label: 'Last Edited', value: 'Jun 30, 2025', status: 'caution', statusLabel: '45 days ago' },
-            ],
-          },
-          seo: {
-            subtitle: 'Score 87 / 100',
-            metrics: [
-              { label: 'Meta Title', value: 'Optimized', status: 'good', statusLabel: 'Target keyword' },
-              { label: 'Meta Description', value: 'Needs action', status: 'issue', statusLabel: 'Missing CTA' },
-              { label: 'Open Graph', value: 'Preview image', status: 'good', statusLabel: 'Updated' },
-              { label: 'Schema', value: 'Organization', status: 'good', statusLabel: 'Valid' },
-              { label: 'Page Speed', value: '84 (desktop)', status: 'caution', statusLabel: 'Image weight' },
-            ],
-          },
-          accessibility: {
-            subtitle: 'WCAG score 92 / 100',
-            metrics: [
-              { label: 'Heading Hierarchy', value: 'Pass', status: 'good', statusLabel: 'Clear' },
-              { label: 'Image Alt Text', value: '2 missing', status: 'issue', statusLabel: 'Add alt text' },
-              { label: 'Keyboard Navigation', value: 'Pass', status: 'good', statusLabel: 'Tab order' },
-              { label: 'Color Contrast', value: 'AA', status: 'good', statusLabel: 'Verified' },
-              { label: 'ARIA Labels', value: 'Team slider', status: 'caution', statusLabel: 'Add region label' },
-            ],
-          },
-          traffic: {
-            subtitle: 'Weekly engagement trend',
-            primary: {
-              value: '4.2k',
-              label: 'Views 30d',
-              delta: '+6.1% vs prior',
-              direction: 'up',
-              context: 'Avg. time on page 2m 18s',
-            },
-            metrics: [
-              { label: 'Unique visitors', value: '2.9k', status: 'good', statusLabel: 'Up 4%' },
-              { label: 'CTA clicks', value: '384', status: 'good', statusLabel: 'New record' },
-              { label: 'Bounce rate', value: '42%', status: 'caution', statusLabel: 'Improve hero' },
-              { label: 'Top referrer', value: 'LinkedIn', status: 'good', statusLabel: '34%' },
-            ],
-          },
-        },
-        'annual-reports': {
-          headline: 'Annual Reports hub',
-          summary: 'Download center for investor-ready documents.',
-          info: {
-            subtitle: 'Owned by Casey Morgan',
-            metrics: [
-              { label: 'Documents', value: '8 uploads', status: 'good', statusLabel: 'Current' },
-              { label: 'Word Count', value: '1,180 words', status: 'good', statusLabel: 'Skimmable' },
-              { label: 'Downloads', value: '742 YTD', status: 'good', statusLabel: '+18%' },
-              { label: 'Links', value: '6 outbound', status: 'caution', statusLabel: 'Verify quarterly' },
-              { label: 'Last Edited', value: 'May 12, 2025', status: 'issue', statusLabel: '90+ days' },
-            ],
-          },
-          seo: {
-            subtitle: 'Score 79 / 100',
-            metrics: [
-              { label: 'Meta Title', value: 'Too short', status: 'caution', statusLabel: 'Add detail' },
-              { label: 'Meta Description', value: 'Optimized', status: 'good', statusLabel: '120 chars' },
-              { label: 'Open Graph', value: 'No image', status: 'issue', statusLabel: 'Add OG art' },
-              { label: 'Schema', value: 'Report & FAQ', status: 'good', statusLabel: 'Valid' },
-              { label: 'Page Speed', value: '88 (mobile)', status: 'good', statusLabel: 'CDN cached' },
-            ],
-          },
-          accessibility: {
-            subtitle: 'WCAG score 95 / 100',
-            metrics: [
-              { label: 'Heading Hierarchy', value: 'Pass', status: 'good', statusLabel: 'Structured' },
-              { label: 'Download buttons', value: 'Focusable', status: 'good', statusLabel: 'Keyboard' },
-              { label: 'PDF tags', value: '6 / 8 tagged', status: 'caution', statusLabel: 'Fix 2 files' },
-              { label: 'Contrast', value: 'AAA', status: 'good', statusLabel: 'Excellent' },
-              { label: 'Alt Text', value: 'Hero illustration', status: 'caution', statusLabel: 'Decorative?' },
-            ],
-          },
-          traffic: {
-            subtitle: 'Conversion insights',
-            primary: {
-              value: '2.1k',
-              label: 'Downloads 90d',
-              delta: '+3.4% vs prior',
-              direction: 'up',
-              context: 'Completion rate 78%',
-            },
-            metrics: [
-              { label: 'Unique visitors', value: '3.6k', status: 'good', statusLabel: 'Solid' },
-              { label: 'Top device', value: 'Desktop (58%)', status: 'neutral', statusLabel: 'Stable' },
-              { label: 'Email signups', value: '216', status: 'caution', statusLabel: 'Goal 250' },
-              { label: 'Bounce rate', value: '34%', status: 'good', statusLabel: 'Healthy' },
-            ],
-          },
-        },
-        blog: {
-          headline: 'Blog index',
-          summary: 'Content marketing performance overview.',
-          info: {
-            subtitle: 'Owned by Nico Harper',
-            metrics: [
-              { label: 'Articles', value: '128 published', status: 'good', statusLabel: '+4 this month' },
-              { label: 'Word Count', value: 'Average 1,100', status: 'good', statusLabel: 'Optimal' },
-              { label: 'Featured Images', value: '125 / 128', status: 'caution', statusLabel: '3 missing' },
-              { label: 'Internal Links', value: '24', status: 'good', statusLabel: 'Strong web' },
-              { label: 'Last Edited', value: 'Jul 15, 2025', status: 'good', statusLabel: 'Recent' },
-            ],
-          },
-          seo: {
-            subtitle: 'Score 90 / 100',
-            metrics: [
-              { label: 'Meta Title', value: 'Optimized', status: 'good', statusLabel: 'Dynamic' },
-              { label: 'Meta Description', value: 'Auto generated', status: 'caution', statusLabel: 'Review' },
-              { label: 'Schema', value: 'BlogPosting', status: 'good', statusLabel: 'Valid' },
-              { label: 'Canonical', value: 'Set', status: 'good', statusLabel: 'Avoid duplicates' },
-              { label: 'Page Speed', value: '95 (mobile)', status: 'good', statusLabel: 'Fast' },
-            ],
-          },
-          accessibility: {
-            subtitle: 'WCAG score 97 / 100',
-            metrics: [
-              { label: 'Heading Hierarchy', value: 'Pass', status: 'good', statusLabel: 'H1 only once' },
-              { label: 'Image Alt Text', value: '4 missing', status: 'caution', statusLabel: 'New posts' },
-              { label: 'Keyboard Navigation', value: 'Pass', status: 'good', statusLabel: 'Skip link' },
-              { label: 'Color Contrast', value: 'AA', status: 'good', statusLabel: 'Verified' },
-              { label: 'ARIA Labels', value: 'Tags filter', status: 'good', statusLabel: 'Described' },
-            ],
-          },
-          traffic: {
-            subtitle: 'Engagement funnel',
-            primary: {
-              value: '6.4k',
-              label: 'Views 30d',
-              delta: '+9.8% vs prior',
-              direction: 'up',
-              context: 'Newsletter CTR 4.6%',
-            },
-            metrics: [
-              { label: 'Unique visitors', value: '4.1k', status: 'good', statusLabel: 'Record high' },
-              { label: 'Average scroll depth', value: '68%', status: 'good', statusLabel: 'Goal 65%' },
-              { label: 'Bounce rate', value: '47%', status: 'caution', statusLabel: 'Improve intro' },
-              { label: 'Top post', value: '2025 Impact Story', status: 'good', statusLabel: '1.1k views' },
-            ],
-          },
-        },
-        contact: {
-          headline: 'Contact page health',
-          summary: 'Ensure support pathways stay available.',
-          info: {
-            subtitle: 'Owned by Devin Lee',
-            metrics: [
-              { label: 'Form submissions', value: '328 / month', status: 'good', statusLabel: '+5%' },
-              { label: 'Response SLA', value: '2h 14m', status: 'good', statusLabel: 'On target' },
-              { label: 'Support links', value: '6 live', status: 'good', statusLabel: 'Monitored' },
-              { label: 'Fallback phone', value: 'Tested weekly', status: 'good', statusLabel: 'Up' },
-              { label: 'Last Edited', value: 'Jun 11, 2025', status: 'caution', statusLabel: '60 days ago' },
-            ],
-          },
-          seo: {
-            subtitle: 'Score 85 / 100',
-            metrics: [
-              { label: 'Meta Title', value: 'Optimized', status: 'good', statusLabel: 'Includes CTA' },
-              { label: 'Meta Description', value: 'Too short', status: 'caution', statusLabel: '+24 chars' },
-              { label: 'Open Graph', value: 'Complete', status: 'good', statusLabel: 'Map card' },
-              { label: 'Local Schema', value: 'Enabled', status: 'good', statusLabel: 'Rich results' },
-              { label: 'Page Speed', value: '82 (mobile)', status: 'caution', statusLabel: 'Map embed' },
-            ],
-          },
-          accessibility: {
-            subtitle: 'WCAG score 94 / 100',
-            metrics: [
-              { label: 'Form Labels', value: 'Pass', status: 'good', statusLabel: 'Explicit' },
-              { label: 'Error Messaging', value: 'Needs copy', status: 'issue', statusLabel: 'Add aria-live' },
-              { label: 'Keyboard Navigation', value: 'Pass', status: 'good', statusLabel: 'Focus order' },
-              { label: 'Color Contrast', value: 'AA', status: 'good', statusLabel: 'Verified' },
-              { label: 'Captcha', value: 'Accessible', status: 'good', statusLabel: 'v3' },
-            ],
-          },
-          traffic: {
-            subtitle: 'Conversion sources',
-            primary: {
-              value: '1.9k',
-              label: 'Form views 30d',
-              delta: '-2.4% vs prior',
-              direction: 'down',
-              context: 'Completion rate 42%',
-            },
-            metrics: [
-              { label: 'Unique visitors', value: '1.4k', status: 'neutral', statusLabel: 'Holding' },
-              { label: 'Top device', value: 'Mobile (71%)', status: 'good', statusLabel: 'Optimized' },
-              { label: 'Chat deflection', value: '112 sessions', status: 'caution', statusLabel: 'Watch' },
-              { label: 'Bounce rate', value: '28%', status: 'good', statusLabel: 'Strong' },
-            ],
-          },
-        },
-      };
-
-      const ANALYTICS_CARD_TITLES = {
-        info: 'Page Info',
-        seo: 'SEO',
-        accessibility: 'Accessibility',
-        traffic: 'Traffic',
-      };
-
+      // Static analytics drawer now sourced from template markup.
+      const PAGE_ANALYTICS_DATA = {};
+      const ANALYTICS_CARD_TITLES = {};
       const ANALYTICS_CARD_ORDER = ['info', 'seo', 'accessibility', 'traffic'];
 
-      let analyticsRowElement = null;
-      let analyticsActiveRow = null;
-      let analyticsActivePageId = '';
-      let analyticsColumnCount = 0;
+      const analyticsTemplate = document.getElementById('analyticsDrawerTemplate');
 
-      // Utility helpers used across the analytics and list rendering logic.
-      const dateFormatter = new Intl.DateTimeFormat(undefined, {
-        month: 'short',
-        day: '2-digit',
-        year: 'numeric',
-      });
-
-      function getAuthorInitials(name) {
-        if (!name) {
-          return '';
-        }
-        const initials = name
-          .split(/\s+/)
-          .filter(Boolean)
-          .map((part) => part[0]?.toUpperCase() ?? '')
-          .join('');
-        if (initials) {
-          return initials;
-        }
-        const firstChar = name.trim()[0];
-        return firstChar ? firstChar.toUpperCase() : '';
+      function renderAnalyticsDrawerContent() {
+        return analyticsTemplate ? analyticsTemplate.innerHTML : '';
       }
 
       function getStatusLabel(value) {
@@ -7248,344 +7229,9 @@
       }
 
       function getReportLabel(value) {
-        const match = REPORT_CARD_OPTIONS.find((option) => option.value === value);
-        return match ? match.label : value;
-      }
-
-      // Format YYYY-MM-DD strings into a short, human-friendly date used by analytics rows.
-      function formatDateForDisplay(value) {
-        if (!value) {
-          return '';
-        }
-        const [year, month, day] = value.split('-');
-        if (!year || !month || !day) {
-          return value;
-        }
-        const date = new Date(Number(year), Number(month) - 1, Number(day));
-        if (Number.isNaN(date.getTime())) {
-          return value;
-        }
-        return dateFormatter.format(date);
-      }
-
-      // Sanitize user-facing strings before injecting them into template literals.
-      function escapeHtml(value) {
-        if (value === undefined || value === null) {
-          return '';
-        }
-        return String(value)
-          .replace(/&/g, '&amp;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;')
-          .replace(/'/g, '&#39;');
-      }
-
-      // Map a semantic status to the CSS modifier for analytics chips.
-      function getAnalyticsChipClass(status) {
-        switch (status) {
-          case 'good':
-            return 'is-good';
-          case 'caution':
-            return 'is-caution';
-          case 'issue':
-            return 'is-issue';
-          default:
-            return 'is-neutral';
-        }
-      }
-
-      // Build markup for the metrics inside non-traffic analytics cards.
-      function renderAnalyticsMetricList(metrics) {
-        if (!Array.isArray(metrics) || metrics.length === 0) {
-          return `
-            <li class="analytics-metric">
-              <div class="analytics-metric-main">
-                <span class="analytics-metric-label">Status</span>
-                <span class="analytics-metric-value">No data available</span>
-              </div>
-            </li>
-          `;
-        }
-        return metrics
-          .map((metric) => {
-            const label = escapeHtml(metric?.label ?? '');
-            const value = escapeHtml(metric?.value ?? '—');
-            const helper = metric?.helper ? `<span class="analytics-metric-helper">${escapeHtml(metric.helper)}</span>` : '';
-            const statusLabel = metric?.statusLabel
-              ? `<span class="analytics-chip ${getAnalyticsChipClass(metric.status)}">${escapeHtml(metric.statusLabel)}</span>`
-              : '';
-            return `
-              <li class="analytics-metric">
-                <div class="analytics-metric-main">
-                  <span class="analytics-metric-label">${label}</span>
-                  <span class="analytics-metric-value">${value}</span>
-                  ${helper}
-                </div>
-                ${statusLabel}
-              </li>
-            `;
-          })
-          .join('');
-      }
-
-      // Specialized rendering for the traffic card since it has a hero stat and details.
-      function renderTrafficCardBody(card) {
-        const primary = card?.primary;
-        const metrics = Array.isArray(card?.metrics) ? card.metrics : [];
-        const directionClass =
-          primary?.direction === 'down'
-            ? 'is-down'
-            : primary?.direction === 'up'
-            ? 'is-up'
-            : '';
-        const primaryHtml = primary
-          ? `
-            <div class="analytics-traffic-primary">
-              <span class="analytics-traffic-value">${escapeHtml(primary.value ?? '—')}</span>
-              ${primary.label ? `<span class="analytics-traffic-label">${escapeHtml(primary.label)}</span>` : ''}
-              ${
-                primary.delta
-                  ? `<span class="analytics-traffic-trend ${directionClass}">${escapeHtml(primary.delta)}</span>`
-                  : ''
-              }
-              ${
-                primary.context
-                  ? `<span class="analytics-traffic-context">${escapeHtml(primary.context)}</span>`
-                  : ''
-              }
-            </div>
-          `
-          : '';
-        const detailsHtml = metrics.length
-          ? `
-            <div class="analytics-traffic-details">
-              ${metrics
-                .map((metric) => {
-                  const chip = metric?.statusLabel
-                    ? `<span class="analytics-chip analytics-detail-chip ${getAnalyticsChipClass(metric.status)}">${escapeHtml(metric.statusLabel)}</span>`
-                    : '';
-                  return `
-                    <div class="analytics-detail">
-                      <span class="analytics-detail-label">${escapeHtml(metric?.label ?? '')}</span>
-                      <span class="analytics-detail-value">${escapeHtml(metric?.value ?? '—')}</span>
-                      ${chip}
-                    </div>
-                  `;
-                })
-                .join('')}
-            </div>
-          `
-          : '';
-        return `
-          <div class="analytics-card-body">
-            ${primaryHtml}
-            ${detailsHtml}
-          </div>
-        `;
-      }
-
-      // Assemble the full analytics card, picking the correct body renderer per type.
-      function renderAnalyticsCard(key, card) {
-        const title = ANALYTICS_CARD_TITLES[key] || card?.title || 'Panel';
-        const subtitle = card?.subtitle ? `<span class="analytics-card-subtitle">${escapeHtml(card.subtitle)}</span>` : '';
-        const actionLabel = card?.actionLabel || (key === 'traffic' ? 'Open insights' : 'Audit');
-        const actionButton = actionLabel
-          ? `<button type="button" class="analytics-card-action" data-analytics-action="${escapeHtml(key)}">${escapeHtml(actionLabel)}</button>`
-          : '';
-        const body =
-          key === 'traffic'
-            ? renderTrafficCardBody(card)
-            : `<div class="analytics-card-body"><ul class="analytics-metric-list">${renderAnalyticsMetricList(card?.metrics)}</ul></div>`;
-        return `
-          <div class="analytics-card analytics-card--${escapeHtml(key)}">
-            <div class="analytics-card-header">
-              <div>
-                <span class="analytics-card-title">${escapeHtml(title)}</span>
-                ${subtitle}
-              </div>
-              ${actionButton}
-            </div>
-            ${body}
-          </div>
-        `;
-      }
-
-      // When a row does not have custom analytics data, synthesize plausible defaults
-      // from the dataset attributes so the side panel still looks complete.
-      function generateDefaultAnalytics(row) {
-        const title = row.dataset.title || 'Page analytics';
-        const statusValue = row.dataset.status || '';
-        const statusLabel = getStatusLabel(statusValue) || 'Status';
-        const typeLabel = row.dataset.type || '';
-        const author = row.dataset.author || '';
-        const template = row.dataset.template || 'Custom layout';
-        const modifiedRaw = row.dataset.modified || '';
-        const modified = formatDateForDisplay(modifiedRaw);
-        const reportValueRaw = row.dataset.reportValue ? Number(row.dataset.reportValue) : Number.NaN;
-        const trendRaw = row.dataset.reportTrend ? Number(row.dataset.reportTrend) : Number.NaN;
-        const hasReportValue = Number.isFinite(reportValueRaw);
-        const direction = row.dataset.reportDirection
-          ? row.dataset.reportDirection
-          : Number.isFinite(trendRaw) && trendRaw < 0
-          ? 'down'
-          : Number.isFinite(trendRaw) && trendRaw > 0
-          ? 'up'
-          : 'flat';
-        const viewValue = hasReportValue
-          ? reportValueRaw >= 1000
-            ? `${(reportValueRaw / 1000).toFixed(1)}k`
-            : reportValueRaw.toLocaleString()
-          : '—';
-        let statusTone = 'neutral';
-        let statusChipLabel = statusLabel;
-        switch (statusValue) {
-          case 'published':
-            statusTone = 'good';
-            statusChipLabel = 'Live';
-            break;
-          case 'draft':
-            statusTone = 'caution';
-            statusChipLabel = 'Draft';
-            break;
-          case 'scheduled':
-            statusTone = 'caution';
-            statusChipLabel = 'Scheduled';
-            break;
-          case 'unpublished':
-            statusTone = 'caution';
-            statusChipLabel = 'Offline';
-            break;
-          case 'trash':
-            statusTone = 'issue';
-            statusChipLabel = 'Trash';
-            break;
-          default:
-            statusTone = 'neutral';
-        }
-        const uniqueVisitors = hasReportValue ? Math.max(1, Math.round(reportValueRaw * 0.72)) : null;
-        const deltaText = Number.isFinite(trendRaw)
-          ? trendRaw === 0
-            ? 'No change from prior period'
-            : `${trendRaw > 0 ? '+' : ''}${trendRaw}% vs prior period`
-          : '';
-        const bounceRateValue = direction === 'down' ? '34%' : direction === 'up' ? '48%' : '42%';
-        const bounceRateTone = direction === 'down' ? 'good' : direction === 'up' ? 'caution' : 'neutral';
-
-        return {
-          headline: title,
-          summary: `${statusLabel}${typeLabel ? ` · ${typeLabel}` : ''}`,
-          info: {
-            subtitle: author ? `Owned by ${author}` : 'Assign an owner',
-            metrics: [
-              { label: 'Status', value: statusLabel, status: statusTone, statusLabel: statusChipLabel },
-              { label: 'Type', value: typeLabel || 'Not set', status: typeLabel ? 'neutral' : 'caution', statusLabel: typeLabel ? 'Content type' : 'Set type' },
-              { label: 'Template', value: template, status: 'neutral', statusLabel: 'Layout' },
-              { label: 'Owner', value: author || 'Unassigned', status: author ? 'good' : 'caution', statusLabel: author ? 'Assigned' : 'Assign owner' },
-              { label: 'Last Edited', value: modified || 'Not edited', status: modified ? 'caution' : 'issue', statusLabel: modified ? 'Review' : 'Update' },
-            ],
-          },
-          seo: {
-            subtitle: 'Automated checks pending',
-            metrics: [
-              { label: 'Meta title', value: 'Auto-generated', status: 'caution', statusLabel: 'Customize' },
-              { label: 'Meta description', value: 'Needs summary', status: 'caution', statusLabel: 'Add copy' },
-              { label: 'Open Graph', value: 'Fallback image', status: 'issue', statusLabel: 'Upload' },
-              { label: 'Schema', value: 'Not configured', status: 'issue', statusLabel: 'Add schema' },
-              { label: 'Page speed', value: 'Scan pending', status: 'neutral', statusLabel: 'Run test' },
-            ],
-          },
-          accessibility: {
-            subtitle: 'Accessibility checklist',
-            metrics: [
-              { label: 'Headings', value: 'Audit recommended', status: 'caution', statusLabel: 'Check structure' },
-              { label: 'Alt text', value: 'Add descriptions', status: 'caution', statusLabel: 'Audit' },
-              { label: 'Keyboard navigation', value: 'Not tested', status: 'neutral', statusLabel: 'Run check' },
-              { label: 'Color contrast', value: 'Not tested', status: 'neutral', statusLabel: 'Scan' },
-              { label: 'Interactive labels', value: 'Verify forms', status: 'caution', statusLabel: 'Review' },
-            ],
-          },
-          traffic: {
-            subtitle: 'Engagement overview',
-            primary: {
-              value: viewValue,
-              label: 'Views (30d)',
-              delta: deltaText,
-              direction,
-              context: hasReportValue ? 'Session duration 1m 48s' : 'No analytics collected yet',
-            },
-            metrics: [
-              {
-                label: 'Unique visitors',
-                value: uniqueVisitors ? uniqueVisitors.toLocaleString() : '—',
-                status: uniqueVisitors ? 'neutral' : 'caution',
-                statusLabel: uniqueVisitors ? 'Estimate' : 'No data',
-              },
-              { label: 'Bounce rate', value: bounceRateValue, status: bounceRateTone, statusLabel: bounceRateTone === 'good' ? 'Improving' : bounceRateTone === 'caution' ? 'Watch' : 'Stable' },
-              { label: 'Top device', value: 'Mobile first', status: 'neutral', statusLabel: 'Check layout' },
-              { label: 'Avg. time on page', value: '1m 48s', status: 'neutral', statusLabel: 'Baseline' },
-            ],
-          },
-        };
-      }
-
-      function mergeCardData(baseCard, overrideCard) {
-        if (!baseCard && !overrideCard) {
-          return {};
-        }
-        if (!overrideCard) {
-          return { ...baseCard };
-        }
-        if (!baseCard) {
-          return { ...overrideCard };
-        }
-        const merged = { ...baseCard, ...overrideCard };
-        if (overrideCard.metrics) {
-          merged.metrics = overrideCard.metrics;
-        } else if (baseCard.metrics) {
-          merged.metrics = baseCard.metrics;
-        }
-        if (overrideCard.primary !== undefined) {
-          merged.primary = overrideCard.primary;
-        } else if (baseCard.primary !== undefined && merged.primary === undefined) {
-          merged.primary = baseCard.primary;
-        }
-        return merged;
-      }
-
-      function mergeAnalyticsData(baseData, overrideData) {
-        if (!overrideData) {
-          return baseData;
-        }
-        return {
-          ...baseData,
-          ...overrideData,
-          info: mergeCardData(baseData.info, overrideData.info),
-          seo: mergeCardData(baseData.seo, overrideData.seo),
-          accessibility: mergeCardData(baseData.accessibility, overrideData.accessibility),
-          traffic: mergeCardData(baseData.traffic, overrideData.traffic),
-        };
-      }
-
-      function getAnalyticsDataForRow(row) {
-        const base = generateDefaultAnalytics(row);
-        const pageId = row.dataset.pageId || '';
-        const overrides = pageId ? PAGE_ANALYTICS_DATA[pageId] : undefined;
-        return mergeAnalyticsData(base, overrides);
-      }
-
-      function renderAnalyticsDrawerContent(row, data) {
-        const cards = ANALYTICS_CARD_ORDER.map((key) => renderAnalyticsCard(key, data[key])).join('');
-        return `
-          <div class="page-analytics-drawer" data-analytics-drawer>
-            <button type="button" class="analytics-close" data-analytics-close aria-label="Close analytics panel">
-              <i class="fa-solid fa-xmark" aria-hidden="true"></i>
-            </button>
-            <div class="analytics-grid">
-              ${cards}
-            </div>
-          </div>
-        `;
+        const checkbox = reportCheckboxes.find((input) => input.value === value);
+        const label = checkbox?.parentElement?.querySelector('span')?.textContent?.trim();
+        return label || value;
       }
 
       function closeAnalyticsDrawer({ immediate = false } = {}) {
@@ -7636,13 +7282,12 @@
         if (analyticsRowElement?.isConnected) {
           closeAnalyticsDrawer({ immediate: true });
         }
-        const data = getAnalyticsDataForRow(row);
         const columnCount = Math.max(1, analyticsColumnCount || 1);
         if (!analyticsRowElement) {
           analyticsRowElement = document.createElement('tr');
           analyticsRowElement.className = 'page-analytics-row';
         }
-        analyticsRowElement.innerHTML = `<td colspan="${columnCount}">${renderAnalyticsDrawerContent(row, data)}</td>`;
+        analyticsRowElement.innerHTML = `<td colspan="${columnCount}">${renderAnalyticsDrawerContent()}</td>`;
         analyticsRowElement.classList.remove('is-open');
         row.insertAdjacentElement('afterend', analyticsRowElement);
         if (analyticsActiveRow) {
@@ -9986,168 +9631,100 @@
         searchInput.select();
       }
 
-      const authorButtons = [];
-      const statusButtons = [];
-      const typeButtons = [];
-      const reportCheckboxes = [];
+      const authorButtons = authorFilterList
+        ? Array.from(authorFilterList.querySelectorAll('[data-author-value]'))
+        : [];
+      const statusButtons = statusFilterPills
+        ? Array.from(statusFilterPills.querySelectorAll('[data-status-value]'))
+        : [];
+      const typeButtons = typeFilterList
+        ? Array.from(typeFilterList.querySelectorAll('[data-type-value]'))
+        : [];
+      const reportCheckboxes = reportFilterList
+        ? Array.from(reportFilterList.querySelectorAll('input[type=\"checkbox\"]'))
+        : [];
 
-      function renderAuthorFilters() {
-        if (!authorFilterList) {
-          return;
-        }
-        authorFilterList.innerHTML = '';
-        authorButtons.length = 0;
-
-        const authors = Array.from(new Set(rowData.map((item) => item.author)))
-          .filter(Boolean)
-          .sort();
-
-        authors.forEach((author) => {
-          const button = document.createElement('button');
-          button.type = 'button';
-          button.className = 'author-filter-chip';
-          button.dataset.authorValue = author;
-          button.dataset.active = state.authors.has(author) ? 'true' : 'false';
-
-          const avatar = document.createElement('span');
-          avatar.className = 'author-avatar';
-          const { color = DEFAULT_AUTHOR_COLOR, email } = AUTHOR_DETAILS[author] || {};
+      authorButtons.forEach((button) => {
+        const author = button.dataset.authorValue || button.textContent.trim();
+        const { color = DEFAULT_AUTHOR_COLOR, email } = AUTHOR_DETAILS[author] || {};
+        const avatar = button.querySelector('.author-avatar');
+        if (avatar && !avatar.dataset.color) {
           avatar.dataset.color = color;
-          avatar.textContent = getAuthorInitials(author) || author;
-
-          button.appendChild(avatar);
-          const tooltip = email ? `${author} · ${email}` : author;
-          button.title = tooltip;
-          button.setAttribute('aria-label', `Toggle filter for ${author}`);
-          button.setAttribute('aria-pressed', state.authors.has(author) ? 'true' : 'false');
-          button.setAttribute('data-active', state.authors.has(author) ? 'true' : 'false');
-
-          button.addEventListener('click', () => {
-            store.update((draft) => {
-              if (draft.authors.has(author)) {
-                draft.authors.delete(author);
-              } else {
-                draft.authors.add(author);
-              }
-              return draft;
-            });
-            updateRows();
-            syncFilterControls();
-          });
-
-          authorFilterList.appendChild(button);
-          authorButtons.push(button);
-        });
-      }
-
-      function renderStatusFilters() {
-        if (!statusFilterPills) {
-          return;
         }
-        statusFilterPills.innerHTML = '';
-        statusButtons.length = 0;
-
-        STATUS_OPTIONS.forEach(({ value, label }) => {
-          const button = document.createElement('button');
-          const isActive = state.statuses.has(value);
-          button.type = 'button';
-          button.className = 'filter-pill';
-          button.textContent = label;
-          button.dataset.statusValue = value;
-          button.dataset.active = isActive ? 'true' : 'false';
-          button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
-          button.classList.toggle('is-active', isActive);
-
-          button.addEventListener('click', () => {
-            store.update((draft) => {
-              if (draft.statuses.has(value)) {
-                draft.statuses.delete(value);
-              } else {
-                draft.statuses.add(value);
-              }
-              return draft;
-            });
-            updateRows();
-            syncFilterControls();
+        const tooltip = email ? `${author} · ${email}` : author;
+        button.title = tooltip;
+        button.setAttribute('aria-label', `Toggle filter for ${author}`);
+        button.addEventListener('click', () => {
+          store.update((draft) => {
+            if (draft.authors.has(author)) {
+              draft.authors.delete(author);
+            } else {
+              draft.authors.add(author);
+            }
+            return draft;
           });
-
-          statusFilterPills.appendChild(button);
-          statusButtons.push(button);
+          updateRows();
+          syncFilterControls();
         });
-      }
+      });
 
-      function renderTypeFilters() {
-        if (!typeFilterList) {
-          return;
-        }
-        typeFilterList.innerHTML = '';
-        typeButtons.length = 0;
+      statusButtons.forEach((button) => {
+        const value = button.dataset.statusValue || '';
+        button.addEventListener('click', () => {
+          if (!value) {
+            return;
+          }
+          store.update((draft) => {
+            if (draft.statuses.has(value)) {
+              draft.statuses.delete(value);
+            } else {
+              draft.statuses.add(value);
+            }
+            return draft;
+          });
+          updateRows();
+          syncFilterControls();
+        });
+      });
 
-        const types = Array.from(new Set(rowData.map((item) => item.type)))
-          .filter(Boolean)
-          .sort();
-
-        types.forEach((type) => {
-          const button = document.createElement('button');
-          button.type = 'button';
-          button.className = 'type-chip';
-          button.dataset.typeValue = type;
+      typeButtons.forEach((button) => {
+        const type = button.dataset.typeValue || '';
+        if (!button.dataset.color && type) {
           button.dataset.color = TYPE_STYLES[type] || 'slate';
-          button.dataset.active = state.types.has(type) ? 'true' : 'false';
-          button.textContent = type;
-          button.addEventListener('click', () => {
-            store.update((draft) => {
-              if (draft.types.has(type)) {
-                draft.types.delete(type);
-              } else {
-                draft.types.add(type);
-              }
-              return draft;
-            });
-            updateRows();
-            syncFilterControls();
-          });
-          typeFilterList.appendChild(button);
-          typeButtons.push(button);
-        });
-      }
-
-      function renderReportFilters() {
-        if (!reportFilterList) {
-          return;
         }
-        reportFilterList.innerHTML = '';
-        reportCheckboxes.length = 0;
-
-        REPORT_CARD_OPTIONS.forEach(({ value, label }) => {
-          const wrapper = document.createElement('label');
-          wrapper.className = 'report-checkbox';
-
-          const input = document.createElement('input');
-          input.type = 'checkbox';
-          input.value = value;
-          input.checked = state.reportCards.has(value);
-          input.addEventListener('change', () => {
-            store.update((draft) => {
-              if (input.checked) {
-                draft.reportCards.add(value);
-              } else {
-                draft.reportCards.delete(value);
-              }
-              return draft;
-            });
-            updateRows();
-            syncFilterControls();
+        button.addEventListener('click', () => {
+          if (!type) {
+            return;
+          }
+          store.update((draft) => {
+            if (draft.types.has(type)) {
+              draft.types.delete(type);
+            } else {
+              draft.types.add(type);
+            }
+            return draft;
           });
-
-          const text = document.createElement('span');
-          text.textContent = label;
-
-          wrapper.append(input, text);
-          reportFilterList.appendChild(wrapper);
-          reportCheckboxes.push(input);
+          updateRows();
+          syncFilterControls();
         });
-      }
+      });
+
+      reportCheckboxes.forEach((input) => {
+        input.checked = state.reportCards.has(input.value);
+        input.addEventListener('change', () => {
+          const value = input.value;
+          store.update((draft) => {
+            if (input.checked) {
+              draft.reportCards.add(value);
+            } else {
+              draft.reportCards.delete(value);
+            }
+            return draft;
+          });
+          updateRows();
+          syncFilterControls();
+        });
+      });
 
       function syncCreateButtonState() {
         if (!newPageSubmitButton) {
@@ -10191,10 +9768,6 @@
         }
       }
 
-      renderAuthorFilters();
-      renderStatusFilters();
-      renderTypeFilters();
-      renderReportFilters();
       syncCreateButtonState();
       syncFilterControls();
 
