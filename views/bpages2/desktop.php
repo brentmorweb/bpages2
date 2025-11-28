@@ -7219,6 +7219,13 @@
 
       const analyticsTemplate = document.getElementById('analyticsDrawerTemplate');
 
+      // Track the currently rendered analytics drawer so interactions and animations
+      // can be coordinated without throwing reference errors when the drawer is opened.
+      let analyticsRowElement = null;
+      let analyticsActiveRow = null;
+      let analyticsActivePageId = '';
+      let analyticsColumnCount = 1;
+
       function renderAnalyticsDrawerContent() {
         return analyticsTemplate ? analyticsTemplate.innerHTML : '';
       }
