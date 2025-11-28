@@ -7109,7 +7109,9 @@
       });
 
       // Tiny observable store so multiple UI components can react to state changes
-      // (filters, selection, search text, etc.) without a larger framework.
+      // (filters, selection, search text, etc.) without a larger framework. Used
+      // only inside this template to synchronize filters, dialogs, and bulk
+      // actions without relying on external modules or other files.
       function createStore(initialState) {
         let state = cloneState(initialState);
         const listeners = new Set();
@@ -7226,21 +7228,29 @@
       let analyticsActivePageId = '';
       let analyticsColumnCount = 1;
 
+      // Returns the static HTML for the analytics drawer. Only referenced within
+      // this desktop.php controller when expanding analytics rows.
       function renderAnalyticsDrawerContent() {
         return analyticsTemplate ? analyticsTemplate.innerHTML : '';
       }
 
+      // Maps a status value to its human-readable label for filter chips and
+      // table badges. Used only inside this file by render helpers.
       function getStatusLabel(value) {
         const match = STATUS_OPTIONS.find((option) => option.value === value);
         return match ? match.label : value;
       }
 
+      // Looks up the display label for an analytics report checkbox. Called from
+      // analytics rendering helpers within this template only.
       function getReportLabel(value) {
         const checkbox = reportCheckboxes.find((input) => input.value === value);
         const label = checkbox?.parentElement?.querySelector('span')?.textContent?.trim();
         return label || value;
       }
 
+      // Hides the inline analytics drawer row. This cleanup logic is only invoked
+      // by the analytics open/close handlers inside desktop.php.
       function closeAnalyticsDrawer({ immediate = false } = {}) {
         if (!analyticsRowElement || !analyticsRowElement.isConnected) {
           if (analyticsActiveRow) {
@@ -7275,6 +7285,8 @@
         analyticsRowElement.classList.remove('is-open');
       }
 
+      // Inserts and animates the analytics drawer below a table row. Triggered by
+      // click handlers in this file; no external modules call this.
       function openAnalyticsDrawer(row) {
         if (!(row instanceof HTMLElement)) {
           return;
@@ -7307,6 +7319,8 @@
           analyticsRowElement?.classList.add('is-open');
         });
       }
+      // Updates the summary text that shows how many filters are active. Used by
+      // the filter change listeners inside this template only.
       function updateActiveFilterSummary(count) {
         if (!activeFilterCount) {
           return;
@@ -7705,7 +7719,8 @@
       });
 
       // Switch the page settings drawer between the Metadata and Template tabs while keeping
-      // ARIA attributes aligned for accessibility.
+      // ARIA attributes aligned for accessibility. Only invoked by tab buttons in
+      // this template.
       function setActivePageSettingsTab(tabValue, { focusTab = false } = {}) {
         if (!pageSettingsTabButtons.length || !pageSettingsPanels.length) {
           return;
@@ -7740,6 +7755,7 @@
       }
 
       // Keyboard helper that advances focus to the next or previous settings tab.
+      // Used by keydown handlers in this file; no outside callers.
       function focusAdjacentPageSettingsTab(direction) {
         if (!pageSettingsTabButtons.length) {
           return;
@@ -7757,6 +7773,9 @@
         }
       }
 
+      // Applies the chosen page type to the settings form and updates the related
+      // segmented controls. Only used within desktop.php when initializing the
+      // settings drawer.
       function setPageSettingsType(value) {
         const buttons = pageSettingsTypeButtons;
         if (!buttons.length) {
@@ -7788,6 +7807,8 @@
         });
       }
 
+      // Applies the selected template within the settings dialog, syncing hidden
+      // inputs and ARIA attributes. Only called by controls in this view.
       function setPageSettingsTemplate(value) {
         const buttons = pageSettingsTemplateButtons;
         if (!buttons.length) {
@@ -8344,6 +8365,8 @@
       });
 
       // Apply presentational data attributes (chip colors, avatar accents) derived from row metadata.
+      // Called only during initial hydration of this template to make placeholder
+      // content look cohesive.
       function applyRowVisualStyles() {
         rowData.forEach(({ element, type, author }) => {
           const typeChip = element.querySelector('.chip');
@@ -8372,7 +8395,8 @@
         });
       });
 
-      // Reset and seed the Page Settings dialog with defaults before opening.
+      // Reset and seed the Page Settings dialog with defaults before opening. Only
+      // referenced internally when showing the settings dialog.
       function populatePageSettingsControls() {
         if (pageSettingsPrivacySelect) {
           pageSettingsPrivacySelect.value = 'any';
@@ -8406,6 +8430,8 @@
         setPageSettingsTemplate(defaultPageTemplateValue);
       }
 
+      // Clears the Page Settings dialog state so subsequent opens start fresh.
+      // Used solely within this desktop.php script.
       function resetPageSettingsDialog() {
         pageSettingsForm?.reset();
         if (pageSettingsDialogSubtitle) {
@@ -8418,6 +8444,8 @@
         setActivePageSettingsTab(defaultPageSettingsTab);
       }
 
+     // Opens the Page Settings drawer for a specific row. Triggered by action
+     // buttons within this template; not reused elsewhere.
      function openPageSettingsDialog(pageId, trigger) {
         if (!pageSettingsDialog || !pageId) {
           return;
@@ -8521,6 +8549,8 @@
         });
       }
 
+      // Hides the Page Settings drawer and restores focus back to the trigger when
+      // appropriate. Only used by event handlers in this view.
       function closePageSettingsDialog({ focusTrigger = true } = {}) {
         if (!pageSettingsDialog) {
           return;
@@ -8570,6 +8600,8 @@
       let lastPageSettingsTrigger = null;
       let activeCopyPageId = null;
       let lastCopyPageTrigger = null;
+      // Toggles body scrolling based on whether any drawers or dialogs are open.
+      // This is local to the Pages desktop template; no shared usage elsewhere.
       function syncBodyScrollState() {
         const drawerOpen = filtersDrawer?.getAttribute('aria-hidden') === 'false';
         const createDialogOpen = dialog?.getAttribute('aria-hidden') === 'false';
@@ -8592,6 +8624,8 @@
             : '';
       }
 
+      // Closes a row-level action menu and optionally restores focus. Used only by
+      // menu click/keyboard handlers in this file.
       function closeActionMenu(menu, { focusTrigger = false } = {}) {
         if (!menu) {
           return;
@@ -8609,6 +8643,8 @@
         }
       }
 
+      // Opens a row-level action menu. Called by triggers inside this template; no
+      // external scripts rely on it.
       function openActionMenu(menu) {
         if (!menu) {
           return;
@@ -8624,6 +8660,8 @@
         dropdown.hidden = false;
       }
 
+      // Closes every action menu except an optional exclusion. Used to ensure only
+      // one dropdown stays open within this template.
       function closeAllActionMenus(exceptMenu = null) {
         actionMenus.forEach((menu) => {
           if (menu === exceptMenu) {
@@ -8634,6 +8672,7 @@
       }
 
       // Minimal focus trap to keep keyboard users inside dialogs/modals while they are open.
+      // Exclusively used by dialogs defined in this PHP view.
       function createFocusTrap(container) {
         if (!(container instanceof HTMLElement)) {
           return {
@@ -8703,6 +8742,8 @@
         };
       }
 
+      // Resolves a friendly page name from a table row for use in dialog copy.
+      // Called by action dialog builders within this template only.
       function getPageNameFromRow(row) {
         if (!(row instanceof HTMLElement)) {
           return 'this page';
@@ -8722,6 +8763,8 @@
         return row.dataset.pageId || 'this page';
       }
 
+      // Resolves a friendly folder name from a table row for dialog copy. Only
+      // referenced locally by folder action dialogs.
       function getFolderNameFromRow(row) {
         if (!(row instanceof HTMLElement)) {
           return 'this folder';
@@ -8744,6 +8787,8 @@
         return identifier || 'this folder';
       }
 
+      // Formats a Date into an ISO date string for <input type="date"> controls.
+      // Used internally when prefilling schedule dialogs.
       function formatDateInputValue(date) {
         if (!(date instanceof Date) || Number.isNaN(date.getTime())) {
           return '';
@@ -8754,6 +8799,8 @@
         return `${year}-${month}-${day}`;
       }
 
+      // Formats a Date into HH:MM for <input type="time"> fields. Used only by
+      // scheduling helpers below.
       function formatTimeInputValue(date) {
         if (!(date instanceof Date) || Number.isNaN(date.getTime())) {
           return '';
@@ -8761,7 +8808,8 @@
         return date.toLocaleTimeString([], { hour12: false, hour: '2-digit', minute: '2-digit' });
       }
 
-      // Generic dialog factory for page-level actions (rename, delete, etc.).
+      // Generic dialog factory for page-level actions (rename, delete, etc.). All
+      // usage happens inside this controller to keep dialog wiring consistent.
       function createActionDialog({
         name,
         backdrop,
@@ -8881,6 +8929,7 @@
       }
 
       // Dialog factory specialized for folder-level actions in the left navigation.
+      // Only instantiated by the folder action buttons defined in this template.
       function createFolderActionDialog({
         name,
         backdrop,
@@ -9029,6 +9078,8 @@
         };
       }
 
+      // Determines whether a row matches the current free-text, author, type, status,
+      // and date filters. Used internally when recalculating the table state.
       function matchesBaseFilters(item) {
         if (state.search && !item.searchText.includes(state.search)) {
           return false;
@@ -9073,6 +9124,8 @@
         return true;
       }
 
+      // Shows or hides folder group rows based on the active filters so empty groups
+      // collapse automatically. Only called during filter updates in this script.
       function updateGroupRowsVisibility() {
         folderRows.forEach((folderRow) => {
           const folderId = folderRow.dataset.folder || '_root';
@@ -9082,6 +9135,8 @@
         });
       }
 
+      // Recomputes the badge counts for each folder header. Used when filters or
+      // selections change within this file.
       function updateFolderCounts() {
         folderRows.forEach((folderRow) => {
           const folderId = folderRow.dataset.folder || '_root';
@@ -9101,6 +9156,8 @@
         });
       }
 
+      // Updates tab badges and filter chip summaries based on visible rows. Called
+      // whenever filters or search text change in this view.
       function updateCounts(baseMatches) {
         const counts = { all: 0, published: 0, unpublished: 0, draft: 0, scheduled: 0, trash: 0 };
         rowData.forEach((item) => {
@@ -9125,6 +9182,8 @@
         });
       }
 
+      // Renders the pills that summarize selected filters. Only used after filter
+      // changes inside this template.
       function renderChips() {
         if (!filterChips) {
           return;
@@ -9238,12 +9297,16 @@
         updateActiveFilterSummary(chips.length);
       }
 
+      // Returns the rows currently relevant (all rows or filtered rows depending on
+      // flat view). Used by selection and sort helpers below.
       function getRowsInScope() {
         return pageRows.filter(
           (row) => !row.classList.contains('is-filter-hidden') && !row.classList.contains('is-collapsed')
         );
       }
 
+      // Toggles selection for a specific page row and updates ARIA states. Called by
+      // checkbox handlers defined in this file.
       function setPageSelection(row, shouldSelect) {
         const checkbox = row.querySelector('[data-row-checkbox]');
         const pageId = row.dataset.pageId;
@@ -9262,6 +9325,8 @@
         });
       }
 
+      // Syncs the master checkbox state (checked/indeterminate) with current row
+      // selection. Only used by selection helpers here.
       function updateMasterCheckbox() {
         if (!masterCheckbox) {
           return;
@@ -9278,6 +9343,8 @@
         }
       }
 
+      // Updates folder-level checkboxes to match the selection status of their
+      // member pages. Invoked during selection changes within this script.
       function updateFolderCheckboxes() {
         folderCheckboxes.forEach((checkbox) => {
           const folderId = checkbox.dataset.folderId || '_root';
@@ -9295,6 +9362,8 @@
         });
       }
 
+      // Shows or hides the bulk actions bar based on selection count. Local to this
+      // template; not referenced elsewhere.
       function updateBulkBar() {
         if (!bulkBar || !selectionCount) {
           return;
@@ -9314,6 +9383,8 @@
         syncBulkBarOffset();
       }
 
+      // Keeps the bulk actions bar from overlapping the bottom toolbar by syncing a
+      // CSS variable. Used by scroll/resize listeners in this view only.
       function syncBulkBarOffset() {
         if (!bulkBar) {
           return;
@@ -9324,6 +9395,8 @@
         document.body.style.setProperty('--pages-bulk-bar-offset', `${offset}px`);
       }
 
+      // Extracts comparable values for a given sort key from a table row. Only used
+      // by sort helpers in this template.
       function getSortValue(row, key) {
         switch (key) {
           case 'status': {
@@ -9347,6 +9420,8 @@
         }
       }
 
+      // Performs a stable comparison between two rows based on the active sort key.
+      // Local helper for applySort; not used outside this script.
       function compareRows(a, b, key, direction) {
         const valueA = getSortValue(a, key);
         const valueB = getSortValue(b, key);
@@ -9367,6 +9442,8 @@
         return direction === 'asc' ? result : -result;
       }
 
+      // Finds the table row immediately after a folder header. Used when toggling
+      // folder expansion states below.
       function getNextGroupRow(folderRow) {
         let sibling = folderRow.nextElementSibling;
         while (sibling && !sibling.classList.contains('group-row')) {
@@ -9375,6 +9452,8 @@
         return sibling;
       }
 
+      // Applies the active sort to the currently scoped rows and updates the DOM
+      // order. Only called by sort control handlers here.
       function applySort() {
         if (!state.sortKey) {
           return;
@@ -9436,6 +9515,8 @@
         folderMembers.set('_root', [...pinnedRows, ...sortedUnpinned]);
       }
 
+      // Syncs the visual sort direction indicators with the active sort state.
+      // Used locally whenever sorting changes.
       function updateSortIndicators() {
         sortButtons.forEach((button) => {
           const key = button.dataset.sortKey;
@@ -9455,6 +9536,8 @@
         });
       }
 
+      // Updates the flat view toggle button icon to reflect the current state.
+      // Only used within this script when toggling hierarchy modes.
       function updateFlatViewToggleButton() {
         if (!flatViewToggleButton) {
           return;
@@ -9471,6 +9554,8 @@
         }
       }
 
+      // Updates the folder visibility toggle icon to show whether groups are
+      // expanded. Local helper invoked by folder view handlers.
       function updateFolderViewToggleButtonState() {
         if (!folderViewToggleButton) {
           return;
@@ -9519,6 +9604,8 @@
         setFolderToggleIcon(allExpanded);
       }
 
+      // Expands or collapses a folder group and optionally persists the state to
+      // localStorage. Only called by folder toggle handlers here.
       function setFolderExpanded(folderId, expanded, persist = true) {
         const toggle = document.querySelector(`[data-folder-toggle="${folderId}"]`);
         const members = folderMembers.get(folderId) || [];
@@ -9551,6 +9638,8 @@
         updateBulkBar();
       }
 
+      // Reads saved folder expansion preferences and applies them to the DOM. Used
+      // during initialization inside this template.
       function refreshFolderExpansionFromState() {
         if (isFlatView) {
           return;
@@ -9566,6 +9655,8 @@
         });
       }
 
+      // Switches between hierarchical and flat list views, persisting the choice if
+      // requested. Triggered solely by UI controls in this view.
       function applyFlatViewState({ persist = true } = {}) {
         document.body.classList.toggle('pages-flat-view', isFlatView);
 
@@ -9594,6 +9685,8 @@
         }
       }
 
+      // Re-renders the visible rows based on filters, folder visibility, and view
+      // mode. This is the main refresh routine used by this controller only.
       function updateRows() {
         const baseMatches = new Map();
 
@@ -9630,6 +9723,8 @@
         }
       }
 
+      // Places focus in the main search box without scrolling. Used by keyboard
+      // shortcuts defined in this script.
       function focusSearchInput() {
         if (!searchInput) {
           return;
@@ -9733,6 +9828,8 @@
         });
       });
 
+      // Enables or disables the "New" button based on selection and search state.
+      // Only referenced by event handlers in this file.
       function syncCreateButtonState() {
         if (!newPageSubmitButton) {
           return;
@@ -9740,6 +9837,8 @@
         newPageSubmitButton.disabled = false;
       }
 
+      // Pushes the current filter state into the drawer controls and chips. Used
+      // exclusively by this script after state updates.
       function syncFilterControls() {
         authorButtons.forEach((button) => {
           const value = button.dataset.authorValue;
@@ -9778,6 +9877,7 @@
       syncCreateButtonState();
       syncFilterControls();
 
+      // Opens the filters drawer overlay. Only used within this page template.
       function openDrawer() {
         if (!filtersDrawer) {
           return;
@@ -9790,6 +9890,7 @@
         }
       }
 
+      // Closes the filters drawer and restores body scroll/focus. Local usage only.
       function closeDrawer() {
         if (!filtersDrawer) {
           return;
@@ -9799,6 +9900,7 @@
         filtersButton?.focus();
       }
 
+      // Displays the quick-create dialog. Triggered by the New button in this view.
       function openDialog() {
         if (!dialog) {
           return;
@@ -9808,6 +9910,8 @@
         dialogCloseButton?.focus();
       }
 
+      // Hides the quick-create dialog and optionally refocuses the trigger. Only
+      // referenced within this template.
       function closeDialog({ focusTrigger = true } = {}) {
         if (!dialog) {
           return;
@@ -9819,6 +9923,8 @@
         }
       }
 
+      // Applies a template choice in the new page wizard and optionally syncs the
+      // page type. Used only by wizard controls here.
       function setNewPageTemplate(value, { syncType = true } = {}) {
         if (!newPageTemplateButtons.length) {
           if (newPageTemplateInput) {
@@ -9882,6 +9988,8 @@
         }
       }
 
+      // Updates the new page wizard with the selected page type and template
+      // pairing. Invoked by button handlers inside this template.
       function setNewPageType(value, { syncTemplate = true } = {}) {
         if (!newPageTypeButtons.length) {
           if (newPageTypeInput) {
@@ -9932,6 +10040,8 @@
         }
       }
 
+      // Resets the multi-step new page dialog to its defaults. Only referenced by
+      // open/close handlers in this script.
       function resetNewPageDialog() {
         if (newPageForm) {
           newPageSteps.forEach((section) => {
@@ -9956,6 +10066,8 @@
         }
       }
 
+      // Opens the multi-step new page dialog from the quick-create menu. Not
+      // called outside this view.
       function openNewPageDialog() {
         if (!newPageDialog) {
           return;
@@ -9968,6 +10080,8 @@
         });
       }
 
+      // Closes the new page dialog and optionally refocuses the trigger. Local to
+      // this desktop.php script.
       function closeNewPageDialog({ focusTrigger = true } = {}) {
         if (!newPageDialog) {
           return;
@@ -9979,6 +10093,8 @@
         }
       }
 
+      // Opens the copy page dialog for a specific row. Triggered only by copy
+      // buttons in this template.
       function openCopyPageDialog(pageId, trigger) {
         if (!copyPageDialog) {
           return;
@@ -10014,6 +10130,8 @@
         });
       }
 
+      // Closes the copy page dialog and optionally returns focus to the trigger.
+      // Only used inside this view.
       function closeCopyPageDialog({ focusTrigger = true } = {}) {
         if (!copyPageDialog) {
           return;
@@ -10036,6 +10154,8 @@
         }
       }
 
+      // Clears the folder create/edit dialog so it starts fresh. Used by the
+      // folder dialog open/close helpers below.
       function resetFolderDialog() {
         if (folderSettingsForm) {
           folderSettingsForm.reset();
@@ -10056,6 +10176,8 @@
         folderSettingsDialog?.setAttribute('data-mode', 'edit');
       }
 
+      // Opens the folder dialog in create or edit mode depending on the provided
+      // folder ID. Only invoked by folder buttons within this template.
       function openFolderDialog(folderId = null, { trigger = null } = {}) {
         if (!folderSettingsDialog) {
           return;
@@ -10117,6 +10239,8 @@
         });
       }
 
+      // Closes the folder dialog and returns focus when appropriate. Used solely
+      // by this controller.
       function closeFolderDialog({ focusTrigger = true } = {}) {
         if (!folderSettingsDialog) {
           return;
@@ -10133,6 +10257,8 @@
         }
       }
 
+      // Clears all selected rows and updates related UI affordances. Only used by
+      // handlers in this template.
       function clearSelection() {
         Array.from(state.selection).forEach((pageId) => {
           const row = pageRowById.get(pageId);
@@ -10509,6 +10635,8 @@
         closeCopyPageDialog();
       });
 
+      // Helper to gather the tabs and panels for a wizard step section. Used when
+      // wiring the new page multi-step navigation within this file.
       function getNewPageStepControls(section) {
         if (!section) {
           return [];
@@ -10516,6 +10644,8 @@
         return Array.from(section.querySelectorAll('input, select, textarea'));
       }
 
+      // Syncs the wizard pagination, tab indices, and buttons with the current
+      // step index. Only used by the new page dialog code here.
       function syncNewPageStepState() {
         if (newPageSteps.length === 0) {
           return;
@@ -10561,6 +10691,8 @@
         syncCreateButtonState();
       }
 
+      // Moves keyboard focus into the active panel for a wizard step. Used by
+      // navigation helpers inside this template.
       function focusNewPageStep(section) {
         if (!section) {
           return;
@@ -10577,6 +10709,8 @@
         }
       }
 
+      // Sets the current wizard step by index and optionally focuses the panel.
+      // Only referenced inside this desktop view.
       function setNewPageStep(index, { focusStep = true } = {}) {
         if (newPageSteps.length === 0) {
           return;
@@ -10591,6 +10725,8 @@
         }
       }
 
+      // Handles tab button interactions for the wizard, supporting keyboard and
+      // mouse users. Used only inside this script.
       function handleNewPageStepTabChange(targetIndex, { fromKeyboard = false } = {}) {
         if (newPageSteps.length === 0) {
           return;
@@ -10613,6 +10749,8 @@
         }
       }
 
+      // Validates fields for a wizard step and reports invalid controls. Invoked
+      // by navigation handlers within this template.
       function validateNewPageStep(stepIndex = newPageCurrentStepIndex) {
         const section = newPageSteps[stepIndex];
         if (!section) {
