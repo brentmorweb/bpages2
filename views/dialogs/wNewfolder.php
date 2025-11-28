@@ -83,7 +83,7 @@
 </div>
 <div class="winFooter">
         <a class="close winCloseClick">Cancel</a>
-        <a class="apply" id="createFolderButton">Create</a>
+        <a class="apply" id="createFolderButton"></a>
 </div>
 
 <script>
@@ -108,4 +108,5 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
         });
 });
+
 </script>
